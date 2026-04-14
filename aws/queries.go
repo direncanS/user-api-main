@@ -3,13 +3,14 @@ package aws
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-const bucketName = "mycompany-bucket-picture"
+var bucketName = os.Getenv("S3_BUCKET")
 
 func getObjectURL(objectKey string) string {
 	return fmt.Sprintf("https://%s.s3.amazonaws.com/%s", bucketName, objectKey)
